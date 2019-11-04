@@ -1,0 +1,108 @@
+body,
+ul,
+li,
+p {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  font-size: 1.2rem;
+  font-family: Arial;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.header {
+  display: flex; /*configura os itens um ao lado do outro*/
+  justify-content: space-between; /*configura uma dist?ncia entre os itens*/
+  padding: 20px;
+  align-items: center; /*Alinhar os itens ao centro, para n?o ficar desproporcinar ao usar uma imagem*/
+  flex-wrap: wrap; /*Quando a tela for pequena e um ficar perto do outro, o menu ir? para baixo.*/
+  background: #1d1e20;
+}
+
+.menu {
+  display: flex;
+}
+
+.menu li {
+  margin-left: 10px;
+}
+
+/*Aumentar a ?rea do clique para quando estiver usando mobile*/
+.menu li a {
+  display: block;
+  padding: 10px;
+  /*background: tomato;*/
+}
+
+h1 {
+  text-align: center;
+  margin-top: 100px;
+}
+
+/*Configura para que as imagens fiquem responsivas ao no m?ximo 100% o tamanho do container*/
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* CSS FLEXBOX 1 */
+.flex {
+  display: flex;
+  flex-wrap: wrap; /*fa?a isso ap?s a configura??o do flex > div */
+  max-width: 800px; /*determinando o tamanho m?ximo do container*/
+  margin: 0 auto; /*ao passar dos 800, ir? alinhar ao centro.*/
+}
+
+/*configura??o m?nima para todos os itens
+flex 1 - se expanda
+flex 1 1 - pode ficar menor, flex "shrink".
+flex 1 1 200px - significa que sempre ter? esta base de 200px, se n?o conseguir ter 200px, ir? quebrar.
+*/
+.flex > div {
+  /*falando direto com a div*/
+  flex: 1 1 200px;
+  margin: 10px;
+}
+.grid1 {
+  background-color: green;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  max-width: 800px;
+  padding: 10px;
+  margin: 0 auto;
+  grid-gap: 20px;
+}
+
+.grid1 > div:nth-child(n + 4) {
+  background: blueviolet;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  align-items: center;
+}
+
+.grid1 > div.anuncio{
+  display: block;
+  border-top: 10px solid black;
+  grid-column: 1; /*setando o an�ncio na primeira coluna*/
+  grid-row: 2 /5; /*setando o an�ncio na linha 2 at� a linha 5*/
+}
+
+/*@media query - at� esse tamanho, habilitar os estilos abaixo*/
+@media (max-width: 600px){ /*quando a tela tiver no m�ximo 600px aplique as seguintes configura��es*/
+  .grid1{
+    grid-template-columns: 1fr 1fr;
+  }
+  .grid1 > div:nth-child(n + 4){ /*muda o estilo para normal quando estiver com duas colunas*/
+    display: block;
+  }
+  .grid1 > div.anuncio{/*resetando as configura��es do an�ncio para ocupar as 5 linhas ao inv�s de 3*/
+    grid-column: auto;
+    grid-row: auto;
+    order:-1;
+  }
+}
